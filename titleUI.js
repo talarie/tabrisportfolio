@@ -1,7 +1,7 @@
-const {ImageView, TextView, ui, app} = require('tabris');
+const {ImageView, TextView, Button, ui, app} = require('tabris');
 
 app.registerFont('Futura', 'https://github.com/talarie/tabrisportfolio/blob/master/Futura.ttc?raw=true');
-let font = '20px Futura';
+let font = '30px Futura';
 
 createImageView('fit');
 ui.statusBar.background = '#dbc73b'
@@ -14,14 +14,11 @@ function createImageView(scaleMode) {
     scaleMode: scaleMode
   }).appendTo(ui.contentView);
 
-  new TextView({
-  left: 16, top: 'prev() 24', right: 16,
-  text: font
-    }).appendTo(ui.contentView);
-
-    new TextView({
-  left: 16, top: 'prev() 8', right: 16,
-  text: 'Enter',
-  font: font
-    }).appendTo(ui.contentView);
+    let btnEnter = new Button({
+      centerX: 0,
+      top: 'prev() 10',
+      text: 'Enter',
+      font: font
+    })
+  .appendTo(ui.contentView);
 }
