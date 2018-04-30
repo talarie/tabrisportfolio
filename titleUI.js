@@ -15,10 +15,13 @@ function createImageView(scaleMode) {
   }).appendTo(ui.contentView);
 
     let btnEnter = new Button({
+      class: 'main',
       centerX: 0,
       top: 'prev() 10',
       text: 'Enter',
-      font: font
+      font: font,
     })
   .appendTo(ui.contentView);
+
+  ui.find('.main').set('textColor', 'black');
 }
