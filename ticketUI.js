@@ -2,6 +2,9 @@ const {
   Button, CheckBox, Composite, TextView, TextInput, Picker, RadioButton, ScrollView, Slider, Switch, ui
 } = require('tabris');
 
+ui.statusBar.background = '#dbc73b'
+ui.contentView.background = '#fff';
+
 let scrollView = new ScrollView({left: 0, top: 0, right: 0, bottom: 0}).appendTo(ui.contentView);
 
 const COUNTRIES = ['Canada', 'USA'];
@@ -124,7 +127,7 @@ new Composite({
 new Button({
   id: 'reservationButton',
   text: 'Place Reservation',
-  background: '#8b0000',
+  background: '#dbc73b',
   textColor: 'white'
 }).on('select', () => {
   updateMessage();
