@@ -3,7 +3,7 @@ const {ImageView, TextView, Button, ui, app} = require('tabris');
 app.registerFont('Futura', 'https://github.com/talarie/tabrisportfolio/blob/master/Futura.ttc?raw=true');
 let font = '30px Futura';
 
-createImageView('fit');
+createImageView('fill');
 ui.statusBar.background = '#dbc73b'
 ui.contentView.background = '#fff';
 
