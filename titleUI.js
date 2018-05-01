@@ -9,7 +9,7 @@ ui.contentView.background = '#fff';
 
 function createImageView(scaleMode) {
   new ImageView({
-    left: 10, top: 'prev() 10', width: 350, height: 500,
+    left: 10, top: 'prev() 10', width: 350, height: 500, centerX: 0,
     image: 'https://github.com/talarie/tabrisportfolio/blob/master/plutoBadge02.png?raw=true',
     scaleMode: scaleMode
   }).appendTo(ui.contentView);
