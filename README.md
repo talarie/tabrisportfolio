@@ -1,5 +1,7 @@
 # tabrisportfolio
 
-Space app
+Space App
 
-Open with icon, go to viewing page, finish with user input form
+Main goal: Book a flight to Pluto
+
+Open with icon page, go to viewing page, finish with user input form
