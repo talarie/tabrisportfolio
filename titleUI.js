@@ -18,7 +18,7 @@ function createImageView(scaleMode) {
       class: 'main',
       centerX: 0,
       top: 'prev() 10',
-      text: 'Enter',
+      text: 'Book Flight',
       font: font,
     })
   .appendTo(ui.contentView);
