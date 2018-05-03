@@ -1,18 +1,9 @@
-/*
-  TabFolder, Tab and WebView
-  @version:2.4
-  Snippet url:
-  -  http://
-  References:
-  - https://tabrisjs.com/documentation/latest/api/TabFolder.html
-*/
-
 const {ScrollView, CheckBox, Picker, RadioButton, Slider, Switch, Composite, Button, Tab, TextInput, TabFolder, TextView, ImageView, ui, app} = require('tabris');
 
 ui.statusBar.background = '#dbc73b';
 
 app.registerFont('Futura', 'https://github.com/talarie/tabrisportfolio/blob/master/Futura.ttc?raw=true');
-let font = '30px Futura';
+let font = '15px Futura';
 
 let tabFolder = new TabFolder({
   left: 0, top: 0, right: 0, bottom: 0,
@@ -46,25 +37,10 @@ new ImageView({
   }).appendTo(tabTwo);
 
 let tabThree = new Tab({
-    background: '#fff',
+    background: '#000',
     title: 'Reservation', // converted to upper-case on Android
     image: {src: 'https://github.com/talarie/tabrisportfolio/blob/master/ic_check_circle_black_24dp_1x.png?raw=true,'},
   }).appendTo(tabFolder);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 let scrollView = new ScrollView({left: 0, top: 0, right: 0, bottom: 0}).appendTo(tabThree);
 
@@ -74,76 +50,90 @@ const PODOPTIONS = ['Dark Pod', 'Light Pod'];
 new TextView({
   id: 'nameLabel',
   alignment: 'left',
-  text: ' Full Name:'
+  text: 'Full Name', textColor: 'white',
+font: font,
 }).appendTo(scrollView);
 
 new TextInput({
   id: 'nameInput',
-  message: 'Full Name'
+  message: 'Full Name',
+font: font,
 }).appendTo(scrollView);
 
 new TextView({
   id: 'passengerNumberLabel',
-  text: 'Passenger Number:'
+  text: 'Passenger Number', textColor: 'white',
+font: font,
 }).appendTo(scrollView);
 
 new TextInput({
   id: 'passengerNumberInput',
   keyboard: 'number',
-  message: 'Passenger Number'
+  message: 'Passenger Number',
+font: font,
 }).appendTo(scrollView);
 
 new TextView({
   id: 'passcodeLabel',
-  text: 'LifePod Passcode'
+  text: 'LifePod Passcode', textColor: 'white',
+font: font,
 }).appendTo(scrollView);
 
 new TextInput({
   id: 'passcodeInput',
   type: 'password',
-  message: 'Passcode'
+  message: 'Passcode',
+font: font,
 }).appendTo(scrollView);
 
 new TextView({
   id: 'planetLabel',
-  text: 'Planet:'
+  text: 'Planet', textColor: 'white',
+font: font,
 }).appendTo(scrollView);
 
 new Picker({
   id: 'planetPicker',
   itemCount: PLANETS.length,
-  itemText: index => PLANETS[index]
+  itemText: index => PLANETS[index],
+font: font,
 }).appendTo(scrollView);
 
 new TextView({
   id: 'podLabel',
-  text: 'Pod:'
+  text: 'Pod', textColor: 'white',
+font: font,
 }).appendTo(scrollView);
 
 new Picker({
   id: 'podPicker',
   itemCount: PODOPTIONS.length,
-  itemText: index => PODOPTIONS[index]
+  itemText: index => PODOPTIONS[index],
+font: font,
 }).appendTo(scrollView);
 
 new TextView({
   id: 'goopLabel',
-  text: 'Goop:'
+  text: 'Goop', textColor: 'white',
+font: font,
 }).appendTo(scrollView);
 
 new RadioButton({
   id: 'blueGoop',
-  text: 'Blue'
+  text: 'Blue', textColor: 'white',
+font: font,
 }).appendTo(scrollView);
 
 new RadioButton({
   id: 'orangeGoop',
-  text: 'Orange'
+  text: 'Orange', textColor: 'white',
+font: font,
 }).appendTo(scrollView);
 
 new RadioButton({
   id: 'anyGoop',
-  text: "Don't care",
+  text: "Don't care", textColor: 'white',
+font: font,
   checked: true
 }).appendTo(scrollView);
 
@@ -152,12 +142,14 @@ new Composite({
 }).append(
   new TextView({
     id: 'luggageLabel',
-    text: 'Passenger Weight:'
+    text: 'Passenger Weight', textColor: 'white',
+font: font,
   })
 ).append(
   new TextView({
     id: 'luggageWeight',
-    text: '0 Kg'
+    text: '0 Kg', textColor: 'white',
+    font: font,
   })
 ).append(
   new Slider({
@@ -167,16 +159,10 @@ new Composite({
   })
 ).appendTo(scrollView);
 
-
-
-
-
-
-
-
 new CheckBox({
   id: 'petChoice',
-  text: 'Pet Included'
+  text: 'Pet Included', textColor: 'white',
+font: font,
 }).appendTo(scrollView);
 
 new Composite({
@@ -184,7 +170,8 @@ new Composite({
 }).append(
   new TextView({
     id: 'insuranceLabel',
-    text: 'Human Life Insurance'
+    text: 'Human Life Insurance', textColor: 'white',
+    font: font,
   })
 ).append(
   new Switch({
@@ -196,13 +183,14 @@ new Button({
   id: 'reservationButton',
   text: 'Place Reservation',
   background: '#dbc73b',
-  textColor: 'white'
+  textColor: 'white',
+font: font,
 }).on('select', () => {
   updateMessage();
 }).appendTo(scrollView);
 
 let message = new TextView({
-  left: 10, right: 10, top: '#reservationButton 10'
+  left: 10, right: 10, top: '#reservationButton 10', font: font,
 }).appendTo(scrollView);
 
 scrollView.apply({
@@ -257,7 +245,7 @@ function createPodSelection() {
 
 function createWeight() {
   let panel = scrollView.children('#luggagePanel');
-  return panel.children('#luggageSlider').first().selection + ' lbs';
+  return panel.children('#luggageSlider').first().selection + ' kg';
 }
 
 function createPet() {
