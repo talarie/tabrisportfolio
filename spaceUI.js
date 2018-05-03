@@ -1,12 +1,3 @@
-/*
-  TabFolder, Tab and WebView
-  @version:2.4
-  Snippet url:
-  -  http://
-  References:
-  - https://tabrisjs.com/documentation/latest/api/TabFolder.html
-*/
-
 const {ScrollView, CheckBox, Picker, RadioButton, Slider, Switch, Composite, Button, Tab, TextInput, TabFolder, TextView, ImageView, ui, app} = require('tabris');
 
 ui.statusBar.background = '#dbc73b';
@@ -51,10 +42,25 @@ let tabThree = new Tab({
     image: {src: 'https://github.com/talarie/tabrisportfolio/blob/master/ic_check_circle_black_24dp_1x.png?raw=true,'},
   }).appendTo(tabFolder);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 let scrollView = new ScrollView({left: 0, top: 0, right: 0, bottom: 0}).appendTo(tabThree);
 
-const COUNTRIES = ['Pluto'];
-const CLASSES = ['Dark Pod', 'Light Pod'];
+const PLANETS = ['Pluto'];
+const PODOPTIONS = ['Dark Pod', 'Light Pod'];
 
 new TextView({
   id: 'nameLabel',
@@ -96,8 +102,8 @@ new TextView({
 
 new Picker({
   id: 'countryPicker',
-  itemCount: COUNTRIES.length,
-  itemText: index => COUNTRIES[index]
+  itemCount: PLANETS.length,
+  itemText: index => PLANETS[index]
 }).appendTo(scrollView);
 
 new TextView({
@@ -107,8 +113,8 @@ new TextView({
 
 new Picker({
   id: 'classPicker',
-  itemCount: CLASSES.length,
-  itemText: index => CLASSES[index]
+  itemCount: PODOPTIONS.length,
+  itemText: index => PODOPTIONS[index]
 }).appendTo(scrollView);
 
 new TextView({
@@ -212,37 +218,38 @@ scrollView.apply({
 function updateMessage() {
   message.text = [
     'Flight booked for: ' + scrollView.children('#nameInput').first().text,
-    'Destination: ' + COUNTRIES[scrollView.children('#countryPicker').first().selectionIndex],
-    'Seating: ' + createSeating(),
-    'Luggage: ' + createWeight(),
-    'Meal: ' + createMeal(),
-    'Redeem miles: ' + createFrequentFlyerInfo()
+    'No: ' + scrollView.children('#flyerNumberInput').first().text,
+    'Planet: ' + PLANETS[scrollView.children('#countryPicker').first().selectionIndex],
+    'LifePod: ' + createPodSelection(),
+    'Passcode: ' + scrollView.children('#passphraseInput').first().text,
+    'Goop: ' + PODOPTIONS[scrollView.children('#classPicker').first().selectionIndex],
+    'Passenger Weight: ' + createWeight(),
+    'Pet: ' + createPet(),
+    'Human Life Insurance: ' + createLifeInsurance()
   ].join('\n') + '\n';
 }
 
-function createSeating() {
+function createPodSelection() {
   let seating = 'Anywhere';
   scrollView.children('RadioButton').forEach((button) => {
     if (button.checked) {
       seating = button.text;
     }
   });
-  seating += ', ' + CLASSES[scrollView.children('#classPicker').first().selectionIndex];
   return seating;
 }
 
 function createWeight() {
   let panel = scrollView.children('#luggagePanel');
-  return panel.children('#luggageSlider').first().selection + ' kg';
+  return panel.children('#luggageSlider').first().selection + ' lbs';
 }
 
-function createMeal() {
-  return scrollView.children('#veggieChoice').first().checked ? 'Vegetarian' : 'Standard';
+function createPet() {
+  return scrollView.children('#veggieChoice').first().checked ? 'Included' : 'Not Included';
 }
 
-function createFrequentFlyerInfo() {
+function createLifeInsurance() {
   let panel = scrollView.children('#milesPanel');
   let info = panel.children('#milesSwitch').first().checked ? 'Yes' : 'No';
-  info += ', acct: ' + scrollView.children('#flyerNumberInput').first().text;
   return info;
 }
