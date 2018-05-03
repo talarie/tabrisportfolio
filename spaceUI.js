@@ -1,3 +1,12 @@
+/*
+  TabFolder, Tab and WebView
+  @version:2.4
+  Snippet url:
+  -  http://
+  References:
+  - https://tabrisjs.com/documentation/latest/api/TabFolder.html
+*/
+
 const {ScrollView, CheckBox, Picker, RadioButton, Slider, Switch, Composite, Button, Tab, TextInput, TabFolder, TextView, ImageView, ui, app} = require('tabris');
 
 ui.statusBar.background = '#dbc73b';
@@ -190,7 +199,7 @@ font: font,
 }).appendTo(scrollView);
 
 let message = new TextView({
-  left: 10, right: 10, top: '#reservationButton 10', font: font,
+  left: 10, right: 10, top: '#reservationButton 10', font: font, textColor: 'white',
 }).appendTo(scrollView);
 
 scrollView.apply({
@@ -221,7 +230,7 @@ scrollView.apply({
 
 function updateMessage() {
   message.text = [
-    'Flight booked for: ' + scrollView.children('#nameInput').first().text,
+    'Flight booked for: ' + scrollView.children('#nameInput').first().text, 
     'No: ' + scrollView.children('#passengerNumberInput').first().text,
     'Planet: ' + PLANETS[scrollView.children('#planetPicker').first().selectionIndex],
     'LifePod: ' + createPodSelection(),
