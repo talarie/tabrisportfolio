@@ -233,16 +233,16 @@ function updateMessage() {
     'Flight booked for: ' + scrollView.children('#nameInput').first().text, 
     'No: ' + scrollView.children('#passengerNumberInput').first().text,
     'Planet: ' + PLANETS[scrollView.children('#planetPicker').first().selectionIndex],
-    'LifePod: ' + createPodSelection(),
+    'LifePod: ' + PODOPTIONS[scrollView.children('#podPicker').first().selectionIndex],
     'Passcode: ' + scrollView.children('#passcodeInput').first().text,
-    'Goop: ' + PODOPTIONS[scrollView.children('#podPicker').first().selectionIndex],
+    'Goop: ' + createGoopSelection(),
     'Passenger Weight: ' + createWeight(),
     'Pet: ' + createPet(),
     'Human Life Insurance: ' + createLifeInsurance()
   ].join('\n') + '\n';
 }
 
-function createPodSelection() {
+function createGoopSelection() {
   let seating = 'Anywhere';
   scrollView.children('RadioButton').forEach((button) => {
     if (button.checked) {
