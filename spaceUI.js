@@ -121,28 +121,28 @@ new TextView({
 }).appendTo(scrollView);
 
 new Picker({
-  id: 'classPicker',
+  id: 'podPicker',
   itemCount: PODOPTIONS.length,
   itemText: index => PODOPTIONS[index]
 }).appendTo(scrollView);
 
 new TextView({
-  id: 'seatLabel',
+  id: 'goopLabel',
   text: 'Goop:'
 }).appendTo(scrollView);
 
 new RadioButton({
-  id: 'windowSeat',
+  id: 'blueGoop',
   text: 'Blue'
 }).appendTo(scrollView);
 
 new RadioButton({
-  id: 'aisleSeat',
+  id: 'orangeGoop',
   text: 'Orange'
 }).appendTo(scrollView);
 
 new RadioButton({
-  id: 'anySeat',
+  id: 'anyGoop',
   text: "Don't care",
   checked: true
 }).appendTo(scrollView);
@@ -167,21 +167,28 @@ new Composite({
   })
 ).appendTo(scrollView);
 
+
+
+
+
+
+
+
 new CheckBox({
-  id: 'veggieChoice',
+  id: 'petChoice',
   text: 'Pet Included'
 }).appendTo(scrollView);
 
 new Composite({
-  id: 'milesPanel'
+  id: 'insurancePanel'
 }).append(
   new TextView({
-    id: 'milesLabel',
+    id: 'insuranceLabel',
     text: 'Human Life Insurance'
   })
 ).append(
   new Switch({
-    id: 'milesSwitch'
+    id: 'insuranceSwitch'
   })
 ).appendTo(scrollView);
 
@@ -207,21 +214,21 @@ scrollView.apply({
   '#passcodeInput': {left: '#passcodeLabel 10', right: 10, baseline: '#passcodeLabel'},
   '#planetLabel': {left: 10, top: '#passcodeLabel 18', width: 120},
   '#planetPicker': {left: '#planetLabel 10', right: 10, baseline: '#planetLabel'},
-  '#seatLabel': {left: 10, top: '#podLabel 18', width: 120},
-  '#windowSeat': {left: '#seatLabel 10', right: 10, baseline: '#seatLabel'},
-  '#aisleSeat': {left: '#seatLabel 10', right: 10, top: '#seatLabel 10'},
+  '#goopLabel': {left: 10, top: '#podLabel 18', width: 120},
+  '#blueGoop': {left: '#goopLabel 10', right: 10, baseline: '#goopLabel'},
+  '#orangeGoop': {left: '#goopLabel 10', right: 10, top: '#goopLabel 10'},
   '#podLabel': {left: 10, top: '#planetLabel 18', width: 120},
-  '#classPicker': {left: '#podLabel 10', right: 10, baseline: '#podLabel'},
-  '#anySeat': {left: '#seatLabel 10', right: 10, top: '#aisleSeat 10'},
-  '#luggagePanel': {left: 10, top: '#anySeat 18', right: 10},
+  '#podPicker': {left: '#podLabel 10', right: 10, baseline: '#podLabel'},
+  '#anyGoop': {left: '#goopLabel 10', right: 10, top: '#orangeGoop 10'},
+  '#luggagePanel': {left: 10, top: '#anyGoop 18', right: 10},
   '#luggageLabel': {left: 0, centerY: 0, width: 120},
   '#luggageWeight': {right: 10, centerY: 0, width: 50},
   '#luggageSlider': {left: '#luggageLabel 10', right: '#luggageWeight 10', centerY: 0},
-  '#veggieChoice': {left: '#seatLabel 10', right: 10, top: '#luggagePanel 10'},
-  '#milesPanel': {left: 10, top: '#veggieChoice 10', right: 10},
-  '#milesLabel': {left: 0, centerY: 0, width: 120},
-  '#milesSwitch': {left: '#milesLabel 10', centerY: 0},
-  '#reservationButton': {left: 10, right: 10, top: '#milesPanel 18'}
+  '#petChoice': {left: '#goopLabel 10', right: 10, top: '#luggagePanel 10'},
+  '#insurancePanel': {left: 10, top: '#petChoice 10', right: 10},
+  '#insuranceLabel': {left: 0, centerY: 0, width: 120},
+  '#insuranceSwitch': {left: '#insuranceLabel 10', centerY: 0},
+  '#reservationButton': {left: 10, right: 10, top: '#insurancePanel 18'}
 });
 
 function updateMessage() {
@@ -231,7 +238,7 @@ function updateMessage() {
     'Planet: ' + PLANETS[scrollView.children('#planetPicker').first().selectionIndex],
     'LifePod: ' + createPodSelection(),
     'Passcode: ' + scrollView.children('#passcodeInput').first().text,
-    'Goop: ' + PODOPTIONS[scrollView.children('#classPicker').first().selectionIndex],
+    'Goop: ' + PODOPTIONS[scrollView.children('#podPicker').first().selectionIndex],
     'Passenger Weight: ' + createWeight(),
     'Pet: ' + createPet(),
     'Human Life Insurance: ' + createLifeInsurance()
@@ -254,11 +261,11 @@ function createWeight() {
 }
 
 function createPet() {
-  return scrollView.children('#veggieChoice').first().checked ? 'Included' : 'Not Included';
+  return scrollView.children('#petChoice').first().checked ? 'Included' : 'Not Included';
 }
 
 function createLifeInsurance() {
-  let panel = scrollView.children('#milesPanel');
-  let info = panel.children('#milesSwitch').first().checked ? 'Yes' : 'No';
+  let panel = scrollView.children('#insurancePanel');
+  let info = panel.children('#insuranceSwitch').first().checked ? 'Yes' : 'No';
   return info;
 }
