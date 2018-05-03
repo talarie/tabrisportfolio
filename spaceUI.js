@@ -1,3 +1,12 @@
+/*
+  TabFolder, Tab and WebView
+  @version:2.4
+  Snippet url:
+  -  http://
+  References:
+  - https://tabrisjs.com/documentation/latest/api/TabFolder.html
+*/
+
 const {ScrollView, CheckBox, Picker, RadioButton, Slider, Switch, Composite, Button, Tab, TextInput, TabFolder, TextView, ImageView, ui, app} = require('tabris');
 
 ui.statusBar.background = '#dbc73b';
@@ -74,23 +83,23 @@ new TextInput({
 }).appendTo(scrollView);
 
 new TextView({
-  id: 'flyerNumberLabel',
+  id: 'passengerNumberLabel',
   text: 'Passenger Number:'
 }).appendTo(scrollView);
 
 new TextInput({
-  id: 'flyerNumberInput',
+  id: 'passengerNumberInput',
   keyboard: 'number',
   message: 'Passenger Number'
 }).appendTo(scrollView);
 
 new TextView({
-  id: 'passphraseLabel',
+  id: 'passcodeLabel',
   text: 'LifePod Passcode'
 }).appendTo(scrollView);
 
 new TextInput({
-  id: 'passphraseInput',
+  id: 'passcodeInput',
   type: 'password',
   message: 'Passcode'
 }).appendTo(scrollView);
@@ -192,11 +201,11 @@ let message = new TextView({
 scrollView.apply({
   '#nameLabel': {left: 10, top: 18, width: 120},
   '#nameInput': {left: '#nameLabel 10', right: 10, baseline: '#nameLabel'},
-  '#flyerNumberLabel': {left: 10, top: '#nameLabel 18', width: 120},
-  '#flyerNumberInput': {left: '#flyerNumberLabel 10', right: 10, baseline: '#flyerNumberLabel'},
-  '#passphraseLabel': {left: 10, top: '#flyerNumberLabel 18', width: 120},
-  '#passphraseInput': {left: '#passphraseLabel 10', right: 10, baseline: '#passphraseLabel'},
-  '#countryLabel': {left: 10, top: '#passphraseLabel 18', width: 120},
+  '#passengerNumberLabel': {left: 10, top: '#nameLabel 18', width: 120},
+  '#passengerNumberInput': {left: '#passengerNumberLabel 10', right: 10, baseline: '#passengerNumberLabel'},
+  '#passcodeLabel': {left: 10, top: '#passengerNumberLabel 18', width: 120},
+  '#passcodeInput': {left: '#passcodeLabel 10', right: 10, baseline: '#passcodeLabel'},
+  '#countryLabel': {left: 10, top: '#passcodeLabel 18', width: 120},
   '#countryPicker': {left: '#countryLabel 10', right: 10, baseline: '#countryLabel'},
   '#seatLabel': {left: 10, top: '#classLabel 18', width: 120},
   '#windowSeat': {left: '#seatLabel 10', right: 10, baseline: '#seatLabel'},
@@ -218,10 +227,10 @@ scrollView.apply({
 function updateMessage() {
   message.text = [
     'Flight booked for: ' + scrollView.children('#nameInput').first().text,
-    'No: ' + scrollView.children('#flyerNumberInput').first().text,
+    'No: ' + scrollView.children('#passengerNumberInput').first().text,
     'Planet: ' + PLANETS[scrollView.children('#countryPicker').first().selectionIndex],
     'LifePod: ' + createPodSelection(),
-    'Passcode: ' + scrollView.children('#passphraseInput').first().text,
+    'Passcode: ' + scrollView.children('#passcodeInput').first().text,
     'Goop: ' + PODOPTIONS[scrollView.children('#classPicker').first().selectionIndex],
     'Passenger Weight: ' + createWeight(),
     'Pet: ' + createPet(),
