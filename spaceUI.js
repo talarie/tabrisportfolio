@@ -17,9 +17,8 @@ let tabFolder = new TabFolder({
 
 let tabHome = new Tab({
     title: 'Home', // converted to upper-case on Android
+    image: {src: 'https://github.com/talarie/tabrisportfolio/blob/master/ic_home_black_24dp_1x.png?raw=true,'},
   }).appendTo(tabFolder);
-
-
 
 
 app.registerFont('Futura', 'https://github.com/talarie/tabrisportfolio/blob/master/Futura.ttc?raw=true');
@@ -38,19 +37,19 @@ function createImageView(scaleMode) {
 }
 
 
-let tabWeb = new Tab({
+let tabTwo = new Tab({
     title: 'Details', // converted to upper-case on Android
+    image: {src: 'https://github.com/talarie/tabrisportfolio/blob/master/ic_list_black_24dp_1x.png?raw=true,'},
   }).appendTo(tabFolder);
 
-//tabWeb
+  //}).appendTo(tabTwo);
 
 
 
-let tabTaylar = new Tab({
+let tabThree = new Tab({
     title: 'Reservation', // converted to upper-case on Android
+    image: {src: 'https://github.com/talarie/tabrisportfolio/blob/master/ic_check_circle_black_24dp_1x.png?raw=true,'},
   }).appendTo(tabFolder);
 
-  let txt3 = new TextView({
-    centerX: 0, top:0,
-    text: 'Hey this is tab 3 Taylar '
-  }).appendTo(tabTaylar);
+
+  //}).appendTo(tabThree);
