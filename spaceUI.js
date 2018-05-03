@@ -105,18 +105,18 @@ new TextInput({
 }).appendTo(scrollView);
 
 new TextView({
-  id: 'countryLabel',
+  id: 'planetLabel',
   text: 'Planet:'
 }).appendTo(scrollView);
 
 new Picker({
-  id: 'countryPicker',
+  id: 'planetPicker',
   itemCount: PLANETS.length,
   itemText: index => PLANETS[index]
 }).appendTo(scrollView);
 
 new TextView({
-  id: 'classLabel',
+  id: 'podLabel',
   text: 'Pod:'
 }).appendTo(scrollView);
 
@@ -205,13 +205,13 @@ scrollView.apply({
   '#passengerNumberInput': {left: '#passengerNumberLabel 10', right: 10, baseline: '#passengerNumberLabel'},
   '#passcodeLabel': {left: 10, top: '#passengerNumberLabel 18', width: 120},
   '#passcodeInput': {left: '#passcodeLabel 10', right: 10, baseline: '#passcodeLabel'},
-  '#countryLabel': {left: 10, top: '#passcodeLabel 18', width: 120},
-  '#countryPicker': {left: '#countryLabel 10', right: 10, baseline: '#countryLabel'},
-  '#seatLabel': {left: 10, top: '#classLabel 18', width: 120},
+  '#planetLabel': {left: 10, top: '#passcodeLabel 18', width: 120},
+  '#planetPicker': {left: '#planetLabel 10', right: 10, baseline: '#planetLabel'},
+  '#seatLabel': {left: 10, top: '#podLabel 18', width: 120},
   '#windowSeat': {left: '#seatLabel 10', right: 10, baseline: '#seatLabel'},
   '#aisleSeat': {left: '#seatLabel 10', right: 10, top: '#seatLabel 10'},
-  '#classLabel': {left: 10, top: '#countryLabel 18', width: 120},
-  '#classPicker': {left: '#classLabel 10', right: 10, baseline: '#classLabel'},
+  '#podLabel': {left: 10, top: '#planetLabel 18', width: 120},
+  '#classPicker': {left: '#podLabel 10', right: 10, baseline: '#podLabel'},
   '#anySeat': {left: '#seatLabel 10', right: 10, top: '#aisleSeat 10'},
   '#luggagePanel': {left: 10, top: '#anySeat 18', right: 10},
   '#luggageLabel': {left: 0, centerY: 0, width: 120},
@@ -228,7 +228,7 @@ function updateMessage() {
   message.text = [
     'Flight booked for: ' + scrollView.children('#nameInput').first().text,
     'No: ' + scrollView.children('#passengerNumberInput').first().text,
-    'Planet: ' + PLANETS[scrollView.children('#countryPicker').first().selectionIndex],
+    'Planet: ' + PLANETS[scrollView.children('#planetPicker').first().selectionIndex],
     'LifePod: ' + createPodSelection(),
     'Passcode: ' + scrollView.children('#passcodeInput').first().text,
     'Goop: ' + PODOPTIONS[scrollView.children('#classPicker').first().selectionIndex],
